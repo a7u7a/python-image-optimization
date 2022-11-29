@@ -35,7 +35,8 @@ def get_icc_profile(image):
 
 def resize_images(in_path, out_path, folder_name, max_size):
     images = os.listdir(in_path)
-    for i, filename in enumerate(images):
+    counter = 0
+    for filename in images:
         if filename == '.DS_Store':
             continue
 
@@ -53,11 +54,12 @@ def resize_images(in_path, out_path, folder_name, max_size):
             small_size = int(image.size[0]*ratio)
             image = image.resize((small_size, max_size))
 
-        final_out_path = out_path + folder_name + '_' + str(i) + '.webp'
+        final_out_path = out_path + folder_name + '_' + str(counter) + '.webp'
         # print("processing file:",filename,"resolution pre:",size_pre ,"resolution post:",image.size, "saving as:",final_out_path )
         print("processing:", filename)
         image.save(final_out_path, 'webp', optimize=True,
                    quality=90, icc_profile=icc)
+        counter += 1
 
 
 def process_all(main_path, out_path):
