@@ -1,6 +1,6 @@
-# Image optimizer
+# Image optimizer for web photos
 
-- Point to a directory with a structure such as this:
+Point to a directory with a structure such as this:
 ````
 ├── folder1
 │   └── seleccion
@@ -14,3 +14,9 @@
 │       └── bai.tif
 ...
 ````
+
+It will output optimized versions of all images that you can drag and drop to a `public` folder:
+
+### Features
+- Preserves ICC profiles
+- Name files according to parent folder name
