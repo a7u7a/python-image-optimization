@@ -19,6 +19,7 @@ It will output optimized (.webp) versions of all images that you can drag and dr
 
 ### Features
 - Preserves ICC profiles
+- Tested on `.jpeg` and `.tiff` images
 - Name files according to parent folder name
 
 ## To-do
