@@ -15,8 +15,11 @@ Point to a directory with a structure such as this:
 ...
 ````
 
-It will output optimized versions of all images that you can drag and drop to a `public` folder:
+It will output optimized (.webp) versions of all images that you can drag and drop to a `public` folder. 
 
 ### Features
 - Preserves ICC profiles
 - Name files according to parent folder name
+
+## To-do
+- Generate low-res placeholder to work nicely with [next/image](https://nextjs.org/docs/api-reference/next/image#placeholder)
