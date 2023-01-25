@@ -3,8 +3,8 @@ from PIL import Image, ImageCms
 import os
 import io
 
-main_path = "/Users/userfriendly/Dropbox/Proyectos/web-cata-andonie/nuevo-contenido/"
-out_path = "/Users/userfriendly/Dropbox/Proyectos/web-cata-andonie/optimized-photos/"
+main_path = "/Users/userfriendly/Dropbox/Proyectos/esrs-2023/content-raw/"
+out_path = "/Users/userfriendly/Dropbox/Proyectos/esrs-2023/content-optimized/"
 
 # save images to low-res folder
 
@@ -35,7 +35,7 @@ def get_icc_profile(image):
         return None
 
 
-def resize_images(in_path, out_path, folder_name, max_size, max_low_res_size):
+def resize_images(in_path, out_path, thumb_path,folder_name, max_size, max_low_res_size):
     images = os.listdir(in_path)
     counter = 0
     for filename in images:
@@ -63,7 +63,7 @@ def resize_images(in_path, out_path, folder_name, max_size, max_low_res_size):
             low_res_small_size = int(image.size[0]*low_res_ratio)
             low_res_image = image.resize((low_res_small_size, max_low_res_size))
 
-        final_out_path = out_path + folder_name + '_' + str(counter) + '.webp'
+        final_out_path = thumb_path + folder_name + '_' + str(counter) + '.webp'
         low_res_path = out_path + '/low-res/' + \
             folder_name + '_' + str(counter) + '.webp'
 
@@ -87,12 +87,14 @@ def process_all(main_path, out_path):
         if folder == '.DS_Store':
             continue
         # get image from "seleccion"
-        in_path = main_path + folder + "/seleccion/"
+        in_path = main_path + folder + "/thumb/"
         sub_out_path = out_path + folder + '/'
+        sub_thumb_path = sub_out_path + "thumb/"
         low_res_path = sub_out_path + '/low-res/'
         os.mkdir(sub_out_path)
+        os.mkdir(sub_thumb_path)
         os.mkdir(low_res_path)
-        resize_images(in_path, sub_out_path, folder, 2000, 50)
+        resize_images(in_path, sub_out_path,sub_thumb_path, folder, 2000, 50)
 
 
 if __name__ == "__main__":
