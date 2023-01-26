@@ -3,7 +3,7 @@ from PIL import Image, ImageCms
 import os
 import io
 
-main_path = "/Users/userfriendly/Dropbox/Proyectos/esrs-2023/content-raw/"
+main_path = "/Users/userfriendly/Dropbox/Proyectos/esrs-2023/content/"
 out_path = "/Users/userfriendly/Dropbox/Proyectos/esrs-2023/content-optimized/"
 
 # save images to low-res folder
@@ -63,7 +63,7 @@ def resize_images(in_path, out_path, thumb_path,folder_name, max_size, max_low_r
             low_res_small_size = int(image.size[0]*low_res_ratio)
             low_res_image = image.resize((low_res_small_size, max_low_res_size))
 
-        final_out_path = thumb_path + folder_name + '_' + str(counter) + '.webp'
+        final_out_path = thumb_path + 'thumb.webp'
         low_res_path = out_path + '/low-res/' + \
             folder_name + '_' + str(counter) + '.webp'
 
@@ -73,8 +73,8 @@ def resize_images(in_path, out_path, thumb_path,folder_name, max_size, max_low_r
                    quality=75, icc_profile=icc)
         #   Save low-res version
 
-        low_res_image.save(low_res_path, 'webp', optimize=True,
-                           quality=90, icc_profile=icc)
+        # low_res_image.save(low_res_path, 'webp', optimize=True,
+        #                    quality=90, icc_profile=icc)
         counter += 1
 
 
@@ -89,11 +89,11 @@ def process_all(main_path, out_path):
         # get image from "seleccion"
         in_path = main_path + folder + "/thumb/"
         sub_out_path = out_path + folder + '/'
-        sub_thumb_path = sub_out_path + "thumb/"
+        sub_thumb_path = sub_out_path
         low_res_path = sub_out_path + '/low-res/'
         os.mkdir(sub_out_path)
-        os.mkdir(sub_thumb_path)
-        os.mkdir(low_res_path)
+        # os.mkdir(sub_thumb_path)
+        # os.mkdir(low_res_path)
         resize_images(in_path, sub_out_path,sub_thumb_path, folder, 2000, 50)
 
 
