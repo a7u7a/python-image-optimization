@@ -26,7 +26,3 @@
 - Name files according to parent folder name.
 - See `process_images.sh` for an example of how to run the script.
 - Update file permissions: `chmod +x process_images.sh`
-
-## To-do
-
-- Generate low-res placeholder to work nicely with [next/image](https://nextjs.org/docs/api-reference/next/image#placeholder)
