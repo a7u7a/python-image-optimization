@@ -1,6 +1,6 @@
 # Image optimizer for web photos
 
-- Python script to batch optimize images for static web assets.
+- Python script to batch optimize images for static web assets. Outputs `.webp` files.
 - Similar to [handbrake-batcher](https://github.com/a7u7a/handbrake-batcher) but for images.
 - Point to a directory with a structure such as this:
 
